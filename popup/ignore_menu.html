@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="ignore_menu.css"/>
+    <script>console.warn("Im working")</script>
+    <script src="ignore_menu.js"></script>
+  </head>
+
+<body>
+  <div id="popup-content">
+    <div class="inp-container">
+      <p>Skriv in jobbig person: </p>
+      <input type="text" id="inp-field-add">
+      <button id="btn-stfu" onclick="addUser()">Bort!</button>
+    </div>
+  </div>
+
+  <div class="inp-container">
+    <p>Frälsa användare: </p>
+    <input type="text" id="inp-field-remove">
+    <button id="btn-reset" onclick="removeUser()">Jag förlåter dig.</button>
+  </div>
+</div>
+
+<div>Tystade personer: <span id="span-ignoreList"></span></div>
+
+  <div id="error-content" class="hidden">
+    <p>Nått gick fel. Skyll inte på mig, jag gör det här gratis.</p>
+  </div>
+</body>
+
+</html>

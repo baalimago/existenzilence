@@ -1,0 +1,28 @@
+html,
+body {
+    width: 400px;
+}
+
+.hidden {
+    display: none;
+}
+
+.popup-content{
+    margin: 0;
+    padding: 0;
+}
+
+.inp-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: fit-content;
+}
+
+.inp-container input {
+    flex: 1;
+    margin: 0 0.5em;
+    height: 100%;
+}
