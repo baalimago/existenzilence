@@ -1,5 +1,4 @@
 (() => {
-    console.log("CLIICK");
     if (window.hasRun) {
         return;
     }
@@ -15,6 +14,7 @@
     }
 
     browser.runtime.onMessage.addListener((message) => {
+        console.log(message);
         switch (message.command) {
             case "stfu":
                 hideSilencedComments(message.annoyingPeople);
@@ -27,7 +27,6 @@
             default:
                 break;
         }
-        if (message.command === "stfu") {} else if (message.command === "oktalk") {}
     });
 
 })();

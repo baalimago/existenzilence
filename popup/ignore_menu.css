@@ -12,6 +12,17 @@ body {
     padding: 0;
 }
 
+.command-container {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin: .5em 0;
+}
+
+.command-container button {
+    margin-left: 0.5em;
+}
+
 .inp-container {
     display: flex;
     flex-direction: row;
