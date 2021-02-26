@@ -2,6 +2,7 @@ arrayRem = (arr, i) => {
   arr.splice(arr.indexOf(i), 1);
 }
 
+
 function reportExecuteScriptError(error) {
   document.querySelector("#popup-content").classList.add("hidden");
   document.querySelector("#error-content").classList.remove("hidden");
@@ -29,6 +30,7 @@ function storeInLocService() {
   }
   if (storeStr == "") return;
   window.localStorage.setItem("annoyingPeople", storeStr);
+  sendStoreQuery(annoyingPeople);
 }
 
 function updateHttp() {
@@ -50,6 +52,7 @@ function addUser() {
   annoyingPeople[newName] = newName;
   storeInLocService();
   updateHttp();
+  sendMuteQuery();
 }
 
 function removeUser() {
@@ -57,6 +60,8 @@ function removeUser() {
   delete(annoyingPeople[remName])
   storeInLocService();
   updateHttp();
+  sendResetQuery();
+  sendMuteQuery();
 }
 
 function sendSilenceQuery(tabs) {
@@ -125,6 +130,20 @@ function sendResetQuery() {
     })
     .catch(reportError);
 
+}
+
+function sendStoreQuery(_annoyingPeople) {
+  browser.tabs.query({
+      active: true,
+      currentWindow: true
+    })
+    .then((tabs) => {
+      browser.tabs.sendMessage(tabs[0].id, {
+        command: "store",
+        annoyingPeople: _annoyingPeople
+      });
+    })
+    .catch(reportError);
 }
 
 browser.tabs.executeScript({
