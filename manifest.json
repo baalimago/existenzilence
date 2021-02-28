@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "ExistenZilence",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Håll käft, jobbiga jävel",
   "icons": {
     "48": "icons/existenz-48.png",
