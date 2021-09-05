@@ -2,7 +2,6 @@ arrayRem = (arr, i) => {
     arr.splice(arr.indexOf(i), 1);
 }
 
-
 function reportExecuteScriptError(error) {
     document.querySelector("#popup-content").classList.add("hidden");
     document.querySelector("#error-content").classList.remove("hidden");
@@ -28,9 +27,12 @@ function storeInLocService() {
         if (i < Object.keys(annoyingPeople).length - 1) storeStr += ";";
         i++;
     }
-    if (storeStr == "") return;
-    window.localStorage.setItem("annoyingPeople", storeStr);
-    sendStoreQuery(storeStr);
+    if (storeStr == "") {
+        window.localStorage.removeItem("annoyingPeople");
+    } else {
+        window.localStorage.setItem("annoyingPeople", storeStr);
+    }
+    sendStoreQuery(annoyingPeople);
 }
 
 function updateHttp() {

@@ -7,11 +7,11 @@
 
     function hideSilencedComments(annoyingPeople) {
         const comments = getAllUserComments();
-        for(const k in comments) {
+        for (const k in comments) {
             const c = comments[k];
             const n = c.children[1].innerText;
-            if(n in annoyingPeople) {
-                 c.style.display="none";
+            if (n in annoyingPeople) {
+                c.style.display = "none";
             }
         }
     }
@@ -19,7 +19,7 @@
     function getAllUserComments() {
         const userComments = [];
         const allBoxes = document.getElementsByClassName("box");
-        for (let i = 0; i< allBoxes.length; i++) {
+        for (let i = 0; i < allBoxes.length; i++) {
             if (allBoxes[i].id.includes("c")) {
                 userComments.push(allBoxes[i]);
             }
@@ -28,10 +28,10 @@
     }
 
     function showSilencedComments() {
-       const comments = getAllUserComments();
-        for(const k in comments) {
+        const comments = getAllUserComments();
+        for (const k in comments) {
             const c = comments[k];
-            c.style.display="";
+            c.style.display = "";
         }
     }
 
@@ -54,8 +54,11 @@
             if (i < Object.keys(annoyingPeople).length - 1) storeStr += ";";
             i++;
         }
-        if (storeStr == "") return;
-        window.localStorage.setItem("annoyingPeople", storeStr);
+        if (storeStr == "") {
+            window.localStorage.removeItem("annoyingPeople");
+        } else {
+            window.localStorage.setItem("annoyingPeople", storeStr);
+        }
     }
 
     browser.runtime.onMessage.addListener((message) => {
